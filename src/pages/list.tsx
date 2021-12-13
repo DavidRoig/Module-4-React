@@ -1,44 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import {
-  generatePath,
-  Link,
-} from 'react-router-dom';
+import { generatePath, Link } from "react-router-dom";
 
-import { PersonSearch } from '@mui/icons-material';
-import {
-  Box,
-  Button,
-  Pagination,
-  Stack,
-  TextField,
-} from '@mui/material';
+import { PersonSearch } from "@mui/icons-material";
+import { Box, Button, Pagination, Stack, TextField } from "@mui/material";
 
-import { MemberEntity } from './member';
-import {
-  ApiResult,
-  getUsers,
-} from './member/api';
-import { OrganisationContext } from './providers';
-
-const defaultPageSize = 2;
-const defaultPage = 1;
+import { MemberEntity } from "../member";
+import { ApiResult, getUsers } from "../member/api";
+import { OrganisationContext } from "../providers";
+import { AppConstants } from "../app.constants";
 
 export const ListPage: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
   const [organisation, setOrganisation] = React.useState<string>("");
-  const [page, setPage] = React.useState<number>(defaultPage);
+  const [page, setPage] = React.useState<number>(AppConstants.defaultPage);
   const [pageTotal, setPageTotal] = React.useState<number>(0);
 
   const organisationContext = React.useContext(OrganisationContext);
 
   React.useEffect(() => {
     setOrganisation(organisationContext.name);
-    searchOrganisation(defaultPage);
+    searchOrganisation(AppConstants.defaultPage);
   }, []);
 
   const searchOrganisation = (page: number) => {
-    getUsers(getOrganisationName(), page, defaultPageSize)
+    getUsers(getOrganisationName(), page, AppConstants.defaultPageSize)
       .then(updatePagination)
       .then(setMembers)
       .then(UpdateOrganisationContext);
@@ -56,8 +42,9 @@ export const ListPage: React.FC = () => {
     return result.data;
   };
 
-  const getPageNumber = () => Math.ceil(pageTotal / defaultPageSize);
-  const clearPagination = () => setPage(defaultPage);
+  const getPageNumber = () =>
+    Math.ceil(pageTotal / AppConstants.defaultPageSize);
+  const clearPagination = () => setPage(AppConstants.defaultPage);
 
   const changePageHandle = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -69,7 +56,7 @@ export const ListPage: React.FC = () => {
 
   const searchHandler = () => {
     clearPagination();
-    searchOrganisation(defaultPage);
+    searchOrganisation(AppConstants.defaultPage);
   };
 
   return (

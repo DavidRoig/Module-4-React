@@ -6,10 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import { DetailPage } from './detail';
-import { ListPage } from './list';
-import { LoginPage } from './login';
-import { OrganisationContextProvider } from './providers';
+import { OrganisationContextProvider } from "./providers";
+import { DetailPage, ListPage, LoginPage } from "./pages";
 
 export const App = () => {
   return (
