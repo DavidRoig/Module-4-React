@@ -8,6 +8,8 @@ import {
 
 import { OrganisationContextProvider } from "./providers";
 import { DetailPage, ListPage, LoginPage } from "./pages";
+import RickAndMortyPage from "./pages/rick-and-morty";
+import { RickAndMortyDetailPage } from "./pages/rick-and-morty-detail";
 
 export const App = () => {
   return (
@@ -22,6 +24,12 @@ export const App = () => {
           </Route>
           <Route path="/detail/:id">
             <DetailPage />
+          </Route>
+          <Route exact path="/rick-and-morty">
+            <RickAndMortyPage />
+          </Route>
+          <Route path="/rick-and-morty/:id">
+            <RickAndMortyDetailPage />
           </Route>
         </Switch>
       </Router>

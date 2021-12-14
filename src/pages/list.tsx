@@ -99,7 +99,7 @@ export const ListPage: React.FC = () => {
                 <td>
                   <Link to={generatePath("/detail/:id", { id: member.login })}>
                     {member.login}
-                  </Link>{" "}
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -113,6 +113,10 @@ export const ListPage: React.FC = () => {
           page={page}
         />
       </Stack>
+      <br />
+      <Link to={generatePath("/rick-and-morty")}>
+        Go to Rick and Morty Page!
+      </Link>
     </>
   );
 };
