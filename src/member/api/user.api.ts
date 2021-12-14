@@ -13,7 +13,7 @@ export const getUsers = (
 
 const validateApiResult = (memberResult: MemberEntity[]): MemberEntity[] => {
   if (!Array.isArray(memberResult)) {
-    throw Error("Opps.... Organizacion no encontrada.");
+    throw Error("Opps.... Organisation not found.");
   }
   return memberResult;
 };

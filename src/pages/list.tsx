@@ -1,10 +1,7 @@
 import React from "react";
-
 import { generatePath, Link } from "react-router-dom";
-
 import { PersonSearch } from "@mui/icons-material";
 import { Box, Button, Pagination, Stack, TextField } from "@mui/material";
-
 import { MemberEntity } from "../member";
 import { ApiResult, getUsers } from "../member/api";
 import { OrganisationContext } from "../providers";
